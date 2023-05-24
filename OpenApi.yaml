@@ -1,0 +1,69 @@
+openapi: 3.0.1
+info:
+  title: My API
+  version: '1.0'
+  description: Some API for data
+  termsOfService: https://www.example.com/tos
+  contact:
+    email: shazeen.cheema@seb.se
+    name: Support
+    url: https://www.example.com/support
+  license:
+    name: Liecense
+    url: https://www.example.com/license
+servers:
+  - url: https://my-json-server.typicode.com/shazeenSEB/APICourse
+    variables: {}
+    description: User API
+  - url: https://my-json-server.typicode.com/shazeenSEB/AnotherServer
+    variables: {}
+    description: Another Server
+paths:
+  /users:
+    summary: user level operations
+    description: create and read users
+    get:
+      summary: fetch users
+      description: read users from server
+      operationId: fetchUsers
+      responses:
+        '2XX':
+          description: successful fetch
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/FullUser'
+        default:
+          description: Default error sample response
+      tags:
+        - users
+  /Elefanter:
+    summary: fetch elephants
+    description: elefanter och friendpoints
+    get:
+      summary: fetch elephants
+      description: read elephants
+      operationId: fetchElephants
+      responses:
+        default:
+          description: Default error sample response
+      tags:
+        - elephants
+
+components:
+    schemas:
+      FullUser:
+        type: object
+        properties:
+          id:
+            type: string
+            example: abs123
+          username:
+            type: string
+            example: bear
+          score:
+            type: integer
+            example: 55
+          active:
+            type: boolean
+            example: true
